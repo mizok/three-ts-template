@@ -95,7 +95,8 @@ const config = (env: any, argv: any): webpack.Configuration => {
       path: resolve(__dirname, 'dist'),
       clean: true
     },
-    target: ['web', 'es5'],
+    target: ['web', 'es6'],
+    devtool: 'source-map',
     devServer: {
       historyApiFallback: true,
       open: true,
@@ -111,11 +112,22 @@ const config = (env: any, argv: any): webpack.Configuration => {
       port: 8080
     },
     mode: 'development',
+    experiments: {
+      topLevelAwait: true
+    },
     module: {
       rules: [
         {
           test: /\.tsx?$/,
-          use: 'ts-loader',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: ['@babel/plugin-syntax-top-level-await'],
+              },
+            },
+            'ts-loader'
+          ],
           exclude: /node_modules/,
         },
         {
