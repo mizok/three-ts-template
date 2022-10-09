@@ -4,7 +4,6 @@ import { Clock } from "three";
 
 export class Playground {
     env: Env;
-    box: Box;
     constructor(private base: Base) {
         this.init();
     }
