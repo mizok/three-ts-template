@@ -1,8 +1,8 @@
 ---
-title: webpack-template
+title: three-ts-template
 date: 
 author: Mizok
-version: 0.9.1
+version: 0.0.1
 tags: 
 ---
 

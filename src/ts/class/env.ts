@@ -1,5 +1,5 @@
 import { Base } from './base';
-import { AmbientLight, DirectionalLight } from 'three';
+import { AmbientLight, Clock, DirectionalLight } from 'three';
 
 export class Env {
     ambientLight: AmbientLight;
@@ -25,6 +25,11 @@ export class Env {
     setAmbientLight() {
         this.ambientLight = new AmbientLight(0xffffff, 0.3);
         this.base.scene.add(this.ambientLight)
+    }
+
+
+    update(clock: Clock) {
+
     }
 
 }

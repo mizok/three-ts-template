@@ -2,17 +2,17 @@ import { Env } from './env';
 import { Renderer } from './renderer';
 import { Camera } from './camera';
 import { Ticker, Sizer } from '../util';
-import { getResources } from '../resource'
 import { Scene, Clock } from 'three';
-
+import { getResources } from '../resource';
+import { Playground } from './playground';
 
 export class Base {
     sizer = new Sizer(this.canvas)
     scene = new Scene();
     ticker = new Ticker();
-    env = new Env(this);
     camera = new Camera(this);
     renderer = new Renderer(this);
+    playground = new Playground(this);
     resources: {
         [key: string]: any
     }
@@ -33,12 +33,8 @@ export class Base {
         this.ticker.on('tick', (clock: Clock) => {
             this.renderer.update();
             this.camera.update();
-            this.frameListener(clock);
+            this.playground.update(clock);
         })
-    }
-
-    frameListener(clock: Clock) {
-
     }
 
     async getResources() {
